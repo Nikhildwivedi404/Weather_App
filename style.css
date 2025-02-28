@@ -1,0 +1,200 @@
+/* style.css */
+
+/* CSS Variables for Theme Colors */
+:root { /* Light Theme (Default) */
+    --background-color: #f0f0f0;
+    --text-color: #333;
+    --primary-color: #007bff; /* Example primary color (blue) */
+    --secondary-color: #6c757d; /* Example secondary color (gray) */
+    --weather-result-bg: #fff; /* Light background for weather result */
+}
+
+body {
+    font-family: sans-serif; /* Basic font */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0; /* Reset default margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions for theme */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    width: 95%; /* Take up 95% of viewport width */
+    margin: 20px auto; /* Center container and add margin */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+#theme-toggle {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#theme-toggle:hover {
+    background-color: darken(var(--secondary-color), 10%); /* Darken on hover */
+}
+
+
+.search-container {
+    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-container input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.search-container button:hover {
+    background-color: darken(var(--primary-color), 10%); /* Darken on hover */
+    transform: scale(1.05);
+}
+
+.weather-result {
+    background-color: var(--weather-result-bg);
+    border: 1px solid var(--secondary-color);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    opacity: 1; /* Initially visible */
+    transition: opacity 0.5s ease-in-out; /* Fade in/out effect */
+}
+
+.weather-result.hidden { /* Class to hide with transition */
+    opacity: 0;
+    pointer-events: none; /* Make it non-interactive when hidden */
+}
+
+.weather-icon img {
+    width: 80px; /* Adjust icon size as needed */
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.temperature {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.description {
+    text-transform: capitalize; /* Capitalize first letter of each word */
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.details {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: var(--text-color); /* Ensure details text uses text color */
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+
+/* Dark Theme Styles */
+body.dark-theme {
+    --background-color: #121212; /* Dark background */
+    --text-color: #eee;         /* Light text */
+    --primary-color: #64b5f6;  /* Dark theme primary (light blue) */
+    --secondary-color: #90a4ae; /* Dark theme secondary (light gray) */
+    --weather-result-bg: #212121; /* Darker background for weather result */
+}
+
+body.dark-theme .weather-result {
+    background-color: var(--weather-result-bg); /* Use dark weather result background */
+    border-color: var(--secondary-color);
+    color: var(--text-color); /* Ensure text is readable in dark theme */
+    box-shadow: 0 2px 5px rgba(255,255,255,0.1); /* Light shadow for dark theme */
+}
+
+
+/* Media Query for smaller screens (e.g., mobile) */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        width: 100%; /* Full width on smaller screens */
+        margin: 10px auto;
+    }
+
+    .search-container {
+        flex-direction: column;
+        margin-bottom: 10px;
+        max-width: 100%;
+    }
+
+    .search-container input {
+        border-radius: 5px 5px 0 0;
+        margin-bottom: 5px;
+    }
+
+    .search-container button {
+        border-radius: 0 0 5px 5px;
+        width: 100%;
+    }
+
+    .weather-result {
+        padding: 15px;
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    .temperature {
+        font-size: 2.5rem;
+    }
+    .description, .details {
+        font-size: 1.1rem;
+    }
+    .weather-icon img {
+        width: 60px; /* Smaller icon on mobile */
+        height: 60px;
+    }
+}
